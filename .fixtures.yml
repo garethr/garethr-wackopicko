@@ -1,0 +1,11 @@
+fixtures:
+  repositories:
+    git: git://github.com/puppetlabs/puppetlabs-git.git
+    vcsrepo: git://github.com/puppetlabs/puppetlabs-vcsrepo.git
+    mysql: git://github.com/puppetlabs/puppetlabs-mysql.git
+    apache: git://github.com/puppetlabs/puppetlabs-apache.git
+    php: git://github.com/saz/puppet-php.git
+    stdlib: git://github.com/puppetlabs/puppetlabs-stdlib.git
+    firewall: git://github.com/puppetlabs/puppetlabs-firewall.git
+  symlinks:
+    wackopicko: "#{source_dir}"
