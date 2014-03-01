@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe 'wackopicko', :type => :class do
-  let(:facts) { {:osfamily => 'Debian', :lsbdistcodename => 'precise'} }
+  let(:facts) { {
+    :osfamily => 'Debian',
+    :operatingsystem => 'Ubuntu',
+    :operatingsystemrelease => '12.04',
+    :lsbdistid => 'debian',
+    :lsbdistcodename => 'precise',
+    :concat_basedir => '/dne',
+  } }
 
   context 'with no parameters' do
     it { should create_class('wackopicko::config') }
@@ -10,7 +17,7 @@ describe 'wackopicko', :type => :class do
     it { should include_class('mysql::server') }
     it { should include_class('php::apache2') }
 
-    it { should contain_service('httpd').with_ensure(true) }
+    it { should contain_service('httpd').with_ensure('running') }
     it { should contain_service('mysqld').with_ensure('running') }
     it { should contain_vcsrepo('/var/www/wackopicko').with_provider('git') }
     it { should contain_apache__vhost('wackopicko').with_docroot('/var/www/wackopicko/website') }
